@@ -1,3 +1,5 @@
+'use strict';
+
 //This is an empty template
 
 function setup() {

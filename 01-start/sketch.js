@@ -1,43 +1,62 @@
-//First example
-//Basic Shape examples
-function setup() {
-	
-	var myCanvas = createCanvas(500, 500);
-	myCanvas.parent('myCanvas');
+'use strict';
+//This is an empty template
 
-	stroke(0); 
-	fill(150);
+function setup() {
+   var myCanvas = createCanvas(500, 500);
+   myCanvas.parent('myCanvas');
+  
+   //cleaning the background
+   background(255,255,255);
+        
 }
 
 function draw() {
-  	background(255);
-		
-	strokeWeight(6); //6 pixels for the outline 
-	stroke(0,0,0); //Black
-	//just one pixel position x,y
-	point(10,10);
+        //backgroud(RED,GREEN,BLUE)
+          //background('#FF00FF'); //background //color WHITE
+    background(255,255,255);
+    noStroke();
+  	if(mouseX > 250){
+          fill(255,0,0,100);
+          rect(0,0, 250, 500);
+        }
+    if(mouseX < 250){
+          fill(0,0,255,100);
+          rect(250,0, 250, 500);
+        }
+    stroke(255,10,255,100);
+    strokeWeight(10);
+        point(mouseX, mouseY); 
+  
+    fill(0,0,255);
+    ellipse(mouseX, mouseY, 100,100);
+          //line(x1,y1, x2,y2)
+          stroke(20,20,100);
+          line(0,0, mouseX, mouseY);
+  
+          stroke(0,50,100);
+           line(500,0, mouseX, mouseY);
+  
+        stroke(50,100,100);
+           line(500,500, mouseX, mouseY);
+  
+          stroke(200,100,100);
+           line(0,500, mouseX, mouseY);
 
-	fill(255,0,0); //RED
-	//ELLIPSE
-	//1 pair x,y and width, height
-	ellipse(100,100,70,100);
-	
-	fill(0,0,255);//BLUE
-	//RECT
-	//1 pair x,y and width, height
-	rect(150,150,50,50);
+           //ellipse(x,y, width, hight);
+    noFill();
+    stroke(255,0,0);
+  	ellipse(250,250, mouseX, mouseX);
+    stroke(0,255,0);
+    ellipse(250,250, abs(mouseX-250), abs(mouseX-250));
 
-
-	fill(0, 255,0); //fill color GREEN
-	//QUAD
-	//needs 4 pairs (x,y) points 
-	quad(10,10, 50,30, 60,80, 10,50);
-	
-	
-	//LINE
-	//needs two pairs of points
-	//two lines crossing the canvas
-	line(0,0, 500,500);
-	line(0,500, 500,0);
+    stroke(0,0,255);
+  	ellipse(250,250, mouseY, mouseY);
+    stroke(0,128,128);
+    ellipse(250,250, abs(mouseY-250), abs(mouseY-250));
+  
+    noStroke();
+    fill(0);
+	text(mouseX, 10,  height );
+	text(mouseY, 100,  height );
 
 }

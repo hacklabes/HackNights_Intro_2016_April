@@ -1,3 +1,5 @@
+'use strict';
+
 function setup() {
 	
   	var myCanvas = createCanvas(500, 500);
