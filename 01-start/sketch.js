@@ -50,13 +50,13 @@ function draw() {
     ellipse(250,250, abs(mouseX-250), abs(mouseX-250));
 
     stroke(0,0,255);
-  	ellipse(250,250, mouseY, mouseY);
+ 	ellipse(250,250, mouseY, mouseY);
     stroke(0,128,128);
     ellipse(250,250, abs(mouseY-250), abs(mouseY-250));
   
     noStroke();
     fill(0);
-	text(mouseX, 10,  height );
-	text(mouseY, 100,  height );
+	text(mouseX, 10,  height);
+	text(mouseY, 100,  height);
 
 }
