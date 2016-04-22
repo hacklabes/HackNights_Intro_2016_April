@@ -4,6 +4,8 @@
 
 var posx;
 var posy;
+var incx;
+var incy; 
 
 function setup() {
    var myCanvas = createCanvas(500, 500);
@@ -14,45 +16,62 @@ function setup() {
   
    posx = 100;
    posy = 100;
-  
+   incx = 1;
+   incy = 0;
   //frameRate(1);
 }
 
 function draw() {
-   //!= different
-   // > bigger than
-   // >= bigger or equal
-   // < smaller than
-   // <= smaller or equal
-  
-   //1 - try to make a square/rectangle movement.
-   //2 - try to make a back forth  movement.
-   //3 - add new variables and new interactive elements
-   posx = posx + 5
-   posy = posy + 1;
+	//!= different
+	// > bigger than
+	// >= bigger or equal
+	// < smaller than
+	// <= smaller or equal
+	// == to test if equal 
+	//1 - try to make a square/rectangle movement.
+	//2 - try to make a back forth  movement.
+	//3 - add new variables and new interactive elements
+	// posy = posy + 1;
 
-   
-   if(posx > 400){
-	 posx = 100;
-   }
-  
-   if(posy > 400){
-	 posy = 100;
-   }
-  
-  
-        //backgroud(RED,GREEN,BLUE)
-          //background('#FF00FF'); //background //color WHITE
-    background(255,255,255,150);
-//    noStroke();
-//  	if(posx > 250){
-//          fill(255,0,0,100);
-//          rect(0,0, 250, 500);
-//        }
-//    if(posx < 250){
-//          fill(0,0,255,100);
-//          rect(250,0, 250, 500);
-//        }
+	posx = posx + incx;
+	posy = posy + incy;
+
+	if(posx > 400){
+	  incx = 0;
+	  incy = 1;
+	  posx = 400;
+	}
+	if(posy < 100){
+	  incx = 1;
+	  incy = 0;
+	  posy = 100;
+	}
+	if(posx < 100){
+	  incx = 0;
+	  incy = -1;
+	  posx = 100;
+	}
+
+	if(posy > 400){
+	  incx = -1;
+	  incy = 0;
+	  posy = 400;
+	}
+
+	//backgroud(RED,GREEN,BLUE)
+	//background('#FF00FF');
+	//background
+	//color WHITE
+	background(255,255,255,150);
+	//    noStroke();
+	//  	if(posx > 250){
+	//          fill(255,0,0,100);
+	//          rect(0,0, 250, 500);
+	//        }
+	//    if(posx < 250){
+	//          fill(0,0,255,100);
+	//          rect(250,0, 250, 500);
+	//        }
     stroke(255,10,255,100);
     strokeWeight(10);
     point(posx, posy); 
