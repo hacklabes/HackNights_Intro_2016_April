@@ -68,10 +68,11 @@ function draw() {
     incy = -incy; 
  }
     
-  background(255,255,255,255);
+  //background(255,255,255,1);
   push();
     translate(cirx, ciry); 
     rotate(radians(ang/10)); //rotate in relation to the center of the image
+    scale(19*tan(radians(ang/10)));
     imageMode(CENTER);
     image(catImg,0,0);
   pop();
