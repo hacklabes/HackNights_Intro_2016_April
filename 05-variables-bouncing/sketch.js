@@ -14,12 +14,21 @@ var py = [];
 var incx = [];
 var incy = [];
 
-var catImg;
-
+var catImg = [];
+var imgList = ['cat1.png','cat2.png','cat3.png','cat4.png','cat1.png','cat2.png','cat3.png','cat4.png','cat1.png','cat2.png','cat3.png','cat4.png','cat1.png','cat2.png','cat3.png','cat4.png'];
 
 //pre loading image to the server
 function preload() {  // preload() runs once
-    catImg = loadImage('cat1.png');
+//    catImg[0] = loadImage('cat1.png');
+//    catImg[1] = loadImage('cat2.png');
+//    catImg[2] = loadImage('cat3.png');
+//    catImg[3] = loadImage('cat4.png');
+  var count = 0;
+  while(count < imgList.length){ //.length return the num elements in the list
+	catImg[count] = loadImage(imgList[count]);
+	count = count + 1; 
+  }
+  
 }
 
 function setup() {
@@ -29,12 +38,11 @@ function setup() {
    //cleaning the background
    background(255,255,255);
   
-   catImg.resize(100,100);
 
    //starting the bouncing movement in a random position
    var count = 0;
    // while true: do something inside {}
-   while(count < NUM){
+   while(count < imgList.length){
 	 //px[0], px[1], px[2],... px[]
 	 //label[INDEX], 
 	 px[count] = random(0, width);
@@ -43,6 +51,9 @@ function setup() {
 	    //step amount    
      incx[count] = random(-5,5);
    	 incy[count] = random(-5,5);
+	 
+	 catImg[count].resize(100,100);
+
 	 count = count + 1;
    }
 //  
@@ -60,7 +71,7 @@ function draw() {
   //update for the liner movements
   var count = 0;
   
-  while(count < NUM){
+  while(count < imgList.length){
 	
 	  px[count] = px[count] + incx[count];    
  	  py[count] = py[count] + incy[count];
@@ -89,7 +100,7 @@ function draw() {
 	  push();
 		translate(px[count] , py[count]); 
 		imageMode(CENTER);
-		image(catImg,0,0);
+		image(catImg[count] ,0,0);
 	  pop();
 
 //	  noStroke();
