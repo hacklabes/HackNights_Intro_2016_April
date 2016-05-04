@@ -19,7 +19,7 @@ var catImg;
 
 //pre loading image to the server
 function preload() {  // preload() runs once
-    catImg = loadImage('cat.png');
+    catImg = loadImage('cat1.png');
 }
 
 function setup() {
