@@ -6,10 +6,13 @@ var ciry;
 var ang = 0;
 
 //variables for the bouncing movement 
-var px; 
-var py;
-var incx;
-var incy; 
+var NUM = 5;//the number of elements you want,
+
+
+var px = [];
+var py = [];
+var incx = [];
+var incy = [];
 
 var catImg;
 
@@ -26,58 +29,78 @@ function setup() {
    //cleaning the background
    background(255,255,255);
   
-
-
    catImg.resize(100,100);
 
    //starting the bouncing movement in a random position
-   px = random(0, width);
-   py = random(0, height);
-    
-   //step amount    
-   incx = 5;
-   incy = 5;
+   var count = 0;
+   // while true: do something inside {}
+   while(count < NUM){
+	 //px[0], px[1], px[2],... px[]
+	 //label[INDEX], 
+	 px[count] = random(0, width);
+	 py[count] = random(0, height);
+	 
+	    //step amount    
+     incx[count] = random(-5,5);
+   	 incy[count] = random(-5,5);
+	 count = count + 1;
+   }
+//  
+//  	 px = random(0, width);
+//	 py = random(0, height);
+//	 
+//	    //step amount    
+//     incx = random(-5,5);
+//   	 incy = random(-5,5);
+//  
 }
 function draw() {
     
   background(255);
   //update for the liner movements
-  px = px + incx;    
-  py = py + incy;
+  var count = 0;
+  
+  while(count < NUM){
+	
+	  px[count] = px[count] + incx[count];    
+ 	  py[count] = py[count] + incy[count];
 
-//make it bounce 
-//checking the boundaries
- if(px > width){
-     incx = -incx;
-   	 px = width;
- }
- if(px < 0){
-     incx = -incx;
-     px = 0;
- }
- 
- if(py > height){
-     incy = -incy;
-     py = height;
- }
- if(py < 0 ){
-    incy = -incy;
-    py = 0;
- }
+		//make it bounce 
+		//checking the boundaries
+ 	  if(px[count] > width){
+ 		    incx[count] = -incx[count];
+   			px[count] = width;
+ 		}
+	
+	  if(px[count] < 0){
+    	 incx[count] = -incx[count];
+    	 px[count] = 0;
+	  }
+	  if(py[count] > height){
+    	 incy[count] = -incy[count];
+     	 py[count] = height;
+ 	  }
+ 	  if(py[count] < 0 ){
+  		 incy[count] = -incy[count];
+  		 py[count] = 0;
+	  }
     
-  //background(255,255,255,1);
-  push();
-    translate(px, py); 
-    imageMode(CENTER);
-    image(catImg,0,0);
-  pop();
-   
-  noStroke();
-  fill(255);
-  rect(0,0, 80, 80);
-  fill(0);
-  text(int(px), 10,30);
-  text(int(py), 10,50);
+	  //background(255,255,255,1);
+	  push();
+		translate(px[count] , py[count]); 
+		imageMode(CENTER);
+		image(catImg,0,0);
+	  pop();
+
+//	  noStroke();
+//	  fill(255);
+//	  rect(0,0, 80, 80);
+//	  fill(0);
+//	  text(int(px), 10,30);
+//	  text(int(py), 10,50);
+	  count = count + 1;
+  	}
+	
 }
 
 function windowResized() {
