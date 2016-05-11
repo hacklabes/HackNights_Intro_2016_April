@@ -87,8 +87,7 @@ function draw() {
  	  if(px[count] > width){
  		    incx[count] = -incx[count];
    			px[count] = width;
- 		}
-	
+ 	  }
 	  if(px[count] < 0){
     	 incx[count] = -incx[count];
     	 px[count] = 0;
@@ -101,6 +100,14 @@ function draw() {
   		 incy[count] = -incy[count];
   		 py[count] = 0;
 	  }
+	  if(px[count] > padX && px[count] < padX+140){
+		if(py[count] > padY && py[count] < padY + 140){
+		  incx[count] = -incx[count];
+		  incy[count] = -incy[count];
+		}
+		
+	  }
+
     
 	  //background(255,255,255,1);
 	  push();
@@ -122,9 +129,25 @@ function draw() {
     
   if(keyIsPressed === true){
  	 if (keyCode === UP_ARROW) {
-   	 padY -= 5;
-  	} else if (keyCode === DOWN_ARROW) {
-   	 padY += 5;
+   		padY -= 5;
+		if(padY < -140){
+	   		padY = height;
+	 	}
+  	 }else if (keyCode === DOWN_ARROW) {
+   	 	padY += 5;
+	 	if(padY >= height){
+	   		padY = -140;
+	 	}
+  	}else if (keyCode === LEFT_ARROW) {
+   		padX -= 5;
+		if(padX < -140){
+	   		padX = width;
+	 	}
+  	 }else if(keyCode === RIGHT_ARROW) {
+   	 	padX += 5;
+	 	if(padX >= width){
+	   		padX = -140;
+	 	}
   	}
   }
 	
