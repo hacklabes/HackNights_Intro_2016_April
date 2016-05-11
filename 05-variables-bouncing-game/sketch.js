@@ -15,11 +15,11 @@ var incx = [];
 var incy = [];
 
 var catImg = [];
-var imgList = ['cat1.png'];
+var imgList = ['cat1.png','cat2.png','cat3.png','cat4.png','cat1.png','cat2.png','cat3.png','cat4.png','cat1.png','cat2.png','cat3.png','cat4.png','cat1.png','cat2.png','cat3.png','cat4.png'];
 var padList = ['dog.png'];
 var padImg;
-var padX;
-var padY;
+var padX,lastPadX;
+var padY,lastPadY;
 
 //pre loading image to the server
 function preload() {  // preload() runs once
@@ -62,6 +62,8 @@ function setup() {
    }
    padX = 100;
    padY = height/2;
+   lastPadX = 5;
+   lastPadY = 5;
 //  
 //  	 px = random(0, width);
 //	 py = random(0, height);
@@ -104,11 +106,11 @@ function draw() {
 		if(py[count] > padY && py[count] < padY + 140){
 		  incx[count] = -incx[count];
 		  incy[count] = -incy[count];
-		}
-		
-	  }
+		  py[count] = py[count] + 1.5*(padY-lastPadY);
+		  px[count] = px[count] + 1.5*(padX-lastPadX);
 
-    
+		}
+	  }
 	  //background(255,255,255,1);
 	  push();
 		translate(px[count] , py[count]); 
@@ -129,21 +131,25 @@ function draw() {
     
   if(keyIsPressed === true){
  	 if (keyCode === UP_ARROW) {
+	   	lastPadY = padY;
    		padY -= 5;
 		if(padY < -140){
 	   		padY = height;
 	 	}
   	 }else if (keyCode === DOWN_ARROW) {
+	    lastPadY = padY;
    	 	padY += 5;
 	 	if(padY >= height){
 	   		padY = -140;
 	 	}
   	}else if (keyCode === LEFT_ARROW) {
+	  	lastPadX = padX;
    		padX -= 5;
 		if(padX < -140){
 	   		padX = width;
 	 	}
   	 }else if(keyCode === RIGHT_ARROW) {
+	   	lastPadX = padX;
    	 	padX += 5;
 	 	if(padX >= width){
 	   		padX = -140;
